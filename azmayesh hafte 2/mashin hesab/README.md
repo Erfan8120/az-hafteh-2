@@ -1,6 +1,6 @@
-## آزمایش شماره هفت 💡
+ آزمایش شماره هفت 
 
-### گزارش کار و مراحل 📝
+ گزارش کار و مراحل 
 
 هدف ما در این آزمایش راه اندازی یک ماشین حساب ساده که چهار عمل اصلی ریاضی را انجام می دهد می باشد. ورودی سریال مانیتور یک عمل معتبر ریاضی به فرمت `number operator number` خواهد بود بنابراین باید دستورات برنامه بتوانند به درستی عبارت ورودی را تجزیه کنند یعنی به ترتیب :  
 1 ) عملوند اول خوانده شود.  
@@ -11,39 +11,37 @@
 
 ---
 
-### توصیف کد های برنامه 💻
+ کد های برنامه 
 
-```cpp
-float num1;
-float num2;
-char operator;
-float result;
-
-void setup() {
-  Serial.begin(9600);
+VOID SETUP(){
+Serial.begin(9600);
+Serial.println("type the calculation:");
 }
 
-void loop() {
-  if (Serial.available() > 0) {
-    num1 = Serial.parseFloat(); // خواندن اولین عملوند از رشته ورودی
-    operator = Serial.read();   // خواندن عملگر از رشته ورودی
-    num2 = Serial.parseFloat(); // خواندن دومین عملوند از رشته ورودی
+void laap(){
+while(Serial.available()>0){
+float num1=Serial.parseInt();
+char s=Serial.read();
+float num2=Serial.parseInt();
+switch(s){
 
-  switch(operator) {
-    case '+' : result = num1 + num2;
-    break;
-    case '-' : result = num1 - num2;
-    break;
-    case '*' : result = num1 * num2;
-    break;
-    case '/' :
-    if (num2 != 0) {    // جلوگیری از رخ دادن خطای تقسیم بر صفر
-     result = num1 / num2;
-    }
-    break;
-  }
-  
-   Serial.print(result);    // چاپ کردن نتیجه محاسبات در خروجی
-  }
-}
-```
+case '+';
+Serial.println(num1+num2);
+break;
+
+case '-';
+Serial.println(num1-num2);
+break;
+
+
+
+case '*';
+Serial.println(num1*num2);
+break;
+
+
+
+
+case '/';
+Serial.println(num1/num2);
+break;

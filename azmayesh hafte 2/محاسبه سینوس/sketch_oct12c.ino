@@ -1,15 +1,20 @@
-#include <Arduino.h>
+#include <math.h>   
+const int numPoints = 360;  
+const float amplitude = 100;
+const float offset = 512;
 
-#include <math.h>
-
-void setup() { Serial.begin(9600);
-}
-void loop() { 
-  for (float = 0; i<1000.0+2)
-  ( Serial.print(sin(1*PI/100.00)); 
-  Serial.print(" ");
-   Serial.println(cos(i*PI/100.00));
-
+void setup() {
+  Serial.begin(9600);
 }
 
+void loop() {
+  for (int i = 0; i < numPoints; i++) {   
+    float radians = i * (PI / 180);     ا
+    float sineValue = amplitude * sin(radians) + offset;    
+    float cosValue = amplitude * cos(radians) + offset;   
+    Serial.print(sineValue);
+    Serial.print(",");  
+    Serial.println(cosValue);
+    delay(10);  
+    }
 }

@@ -1,24 +1,8 @@
-const int ledpin 13 ;
-
 void setup() {
-
-pinMode (ledpin, OUTPUT); Serial.begin(9600);
-
+    Serial.begin(9600); // تنظیم نرخ تبادل داده بر حسب بیت بر ثانیه که باید مطابق نرخ تنظیم شده در سریال مانیتور باشد
 }
 
 void loop() {
-
-if (Serial.available()>0){
-
-int income = Serial.parseInt();
-
-if (income = 101) {
-
-digitalWrite(ledpin, HIGH);
-}
-else if (income 201 ){
-
-digitalWrite(ledpin, LOW);
-
-}}
+    Serial.println("microprocessor!");  // چاپ یک پیغام بر روی سریال مانیتور و رفتن به خط بعدی
+    delay(1000);  
 }
